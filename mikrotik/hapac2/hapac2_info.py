@@ -11,7 +11,7 @@ PORT = 22
 # Function to run MikroTik command and return output
 def run_mikrotik_command(command):
     try:
-        ssh = paramiko.SSHClient()
+        ssh  = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(HOST, port=PORT, username=USER, password=PASSWORD)
 
