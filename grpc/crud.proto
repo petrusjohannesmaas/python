@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package crud;
+
+// The CRUD service definition.
+service CRUDService {
+    rpc Create(Item) returns (Response);
+    rpc Read(ItemId) returns (Item);
+    rpc Update(Item) returns (Response);
+    rpc Delete(ItemId) returns (Response);
+}
+
+// The item message.
+message Item {
+    int32 id = 1;
+    string name = 2;
+}
+
+// The ID message.
+message ItemId {
+    int32 id = 1;
+}
+
+// The response message.
+message Response {
+    string message = 1;
+}
