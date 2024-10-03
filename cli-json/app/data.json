@@ -50,7 +50,7 @@
         ]
     },
     "prompts": {
-        "welcome": [
+        "greet": [
             "Is your coffee ready? type (Y) for your first task, or else to quit."
         ]
     }

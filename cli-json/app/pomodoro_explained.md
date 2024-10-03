@@ -1,79 +1,117 @@
-This code is designed to load a list of tasks from a JSON file, display them to the user one by one, and allow the user to either mark each task as completed or skip it. Here's a breakdown of how it works:
+### Pomodoro Breakdown:
 
-### 1. **Importing the necessary library:**
 ```python
 import json
+from datetime import datetime
 ```
-- The `json` module is imported to handle the reading of a JSON file (`data.json`) and converting it into a Python dictionary.
 
-### 2. **Defining the `show_tasks` function:**
+- **`import json`**: This allows the program to work with JSON data. JSON (JavaScript Object Notation) is a way to structure data. In this case, you're using a JSON file to store tasks and prompts.
+- **`from datetime import datetime`**: This imports Python's `datetime` module, allowing us to get the current date and time, which we use to create a unique file name each day.
+
+---
+
+### The `show_tasks` function:
+
 ```python
-def show_tasks(tasks):
+def show_tasks(tasks):  
+    task_results = []
+```
+
+- **Function definition**: `show_tasks` is a function that takes `tasks` as input. `tasks` is a dictionary loaded from the JSON file.
+- **`task_results = []`**: This is a list that will store all the tasks and responses as strings. After going through all tasks, we'll write this list to a `.txt` file.
+
+---
+
+```python
     for task_id, task_data in tasks.items():
+        # Display task and its details
         print(f"[Task:] {task_id}")
-
         for item in task_data:
-            print(f"  8=>  {item}")
+            print(f"  - {item}")
         print()
-```
-- The `show_tasks` function accepts a dictionary of `tasks`. 
-- The function iterates through each task in the `tasks` dictionary.
-  - `task_id` is the key of the task, and `task_data` is the associated value (which might be a list of task details).
-  - It prints the task ID and each piece of data related to that task.
-  - For each task, the user is asked whether they want to mark the task as completed or skipped.
 
-### 3. **Handling user input:**
+        task_results.append(f"[Task:] {task_id}\n")
+        task_results.extend([f"  - {item}\n" for item in task_data])
+```
+
+- **`for task_id, task_data in tasks.items():`**: This loops through each task in the `tasks` dictionary. `task_id` refers to the name of the task (e.g., "Research", "Rehydration"), and `task_data` is a list of task details (e.g., the action and the duration).
+- **`print(f"[Task:] {task_id}")`**: This prints the task name to the console.
+- **`for item in task_data:`**: This loops through each item in the list (e.g., the task description and duration) and prints them.
+- **`task_results.append()`**: Adds the task name to the list `task_results`.
+- **`task_results.extend([f"  - {item}\n" for item in task_data])`**: Adds the task details (description and time) to `task_results` as a list comprehension.
+
+---
+
 ```python
-        while True:
-            response = input("Next task (N) or skip (S)? ").lower()
-
-            if response in ["n", "next"]:
-                print(f"{task_id} completed.")
-                break  # Move to the next task
-
-            elif response in ["s", "skip"]:
-                print(f"{task_id} skipped.")
-                break  # Skip the current task
-
-            else:
-                print("Invalid input. Please enter 'N' or 'S'.")
+        response = input("Next task (N) or skip (S)? ").lower()
+        result = f"{task_id} completed.\n" if response == "n" else f"{task_id} skipped.\n"
+        task_results.append(result)
 ```
-- After printing the task information, the program enters a `while True` loop that asks the user for input: whether they want to complete the task (`N`) or skip it (`S`).
-- If the user enters `N` or `next`, the task is marked as completed.
-- If the user enters `S` or `skip`, the task is skipped.
-- The loop continues until the user provides valid input. If the input is invalid, the user is prompted again.
 
-### 4. **The `main` function:**
+- **`input()`**: Asks the user if they want to move to the next task or skip it. `.lower()` makes the input lowercase so both "N" and "n" are valid.
+- **`if-else` shorthand (ternary)**: This is a one-line `if-else` statement. If the user types `n`, the task is marked as completed, otherwise, it's marked as skipped.
+- **`task_results.append(result)`**: Adds the result (completed or skipped) to the list `task_results`.
+
+---
+
+### Saving to a `.txt` file:
+
+```python
+    file_name = f"{datetime.now().strftime('%Y-%m-%d')}.txt"
+    with open(file_name, 'w') as file:
+        file.writelines(task_results)
+    
+    print(f"Task results saved to {file_name}")
+```
+
+- **`datetime.now().strftime('%Y-%m-%d')`**: This gets the current date in the format `YYYY-MM-DD`. The `strftime` method formats the date into a string.
+- **`file_name = f"{datetime.now().strftime('%Y-%m-%d')}.txt"`**: This creates a file name that is the current date followed by `.txt` (e.g., `2024-10-03.txt`).
+- **`with open(file_name, 'w') as file:`**: Opens (or creates) the file in "write" mode (`'w'`), which means it will overwrite any existing file with the same name.
+- **`file.writelines(task_results)`**: Writes each item in the `task_results` list to the file.
+- **`print(f"Task results saved to {file_name}")`**: Lets the user know that the task results were saved.
+
+---
+
+### The `main` function:
+
 ```python
 def main():
-    # Load the data from the JSON file
     with open("data.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Ask the user if they're ready
-    welcome_prompt = data["prompts"]["welcome"][0]
-    response = input(welcome_prompt).lower()  # Print the welcome prompt
+    response = input(data["prompts"]["greet"][0]).lower()
     if response == "y":
-        # Show tasks if the user agrees
         show_tasks(data["tasks"])
     else:
-        print("It's all good homie.")
+        print("Goodbye!")
 ```
-- The `main` function opens and reads the `data.json` file using the `json.load` function, converting the JSON data into a Python dictionary.
-- The program then prints a welcome prompt stored in the JSON file (`data["prompts"]["welcome"][0]`) and asks the user if they're ready to begin.
-  - If the user responds with "y", it calls the `show_tasks` function to display the tasks.
-  - If the user responds with anything else, the program prints a casual message and exits.
 
-### 5. **Running the program:**
+- **`with open("data.json", "r", encoding="utf-8") as f:`**: Opens the `data.json` file for reading (`'r'`). The `encoding="utf-8"` ensures the file is read with the correct character encoding.
+- **`data = json.load(f)`**: Loads the JSON data from the file into a Python dictionary called `data`.
+- **`response = input(data["prompts"]["greet"][0]).lower()`**: Asks the user a question (from the `greet` key in the JSON file) and stores the response.
+- **`if response == "y":`**: If the user types "y", the `show_tasks()` function is called to start showing the tasks.
+- **`else: print("Goodbye!")`**: If the user doesn't type "y", the program exits.
+
+---
+
+### The `__name__ == "__main__"` part:
+
 ```python
 if __name__ == "__main__":
     main()
 ```
-- This line ensures that the `main` function runs only if the script is executed directly, not when imported as a module.
 
-### JSON Structure Example:
-For this to work, the `data.json` file must contain something like:
-```json
-{
-  "prompts": {
-    "welcome": ["Are you ready to view your tasks? (y/n)
+- This line checks if the script is being run directly. If it is, it calls the `main()` function. This is a standard Python practice that allows your code to be used as a module or run directly.
+
+---
+
+### Summary:
+
+1. The program reads tasks from a `data.json` file.
+2. It shows the tasks to the user, allowing them to either complete or skip each task.
+3. The results (completed or skipped) are saved to a `.txt` file named with the current date.
+4. The user interacts with the program via prompts and can quit at the start if they choose not to run through the tasks.
+
+---
+
+This simplified explanation should give you a solid understanding of how each part works and help with your notes! Feel free to ask if anything is unclear!

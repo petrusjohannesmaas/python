@@ -1,0 +1,48 @@
+[Task:] Research
+  - Create a research pile for the day.
+  - 25m
+Research completed.
+[Task:] Rehydration
+  - Rehydrate immediately.
+  - 5m
+Rehydration completed.
+[Task:] Studying
+  - Study hard!
+  - 90m
+Studying completed.
+[Task:] Snacking
+  - Eat something small... at least.
+  - 15m
+Snacking completed.
+[Task:] Working
+  - Get to work.
+  - 90m
+Working completed.
+[Task:] Coffee break
+  - Coffee break.
+  - 5m
+Coffee break completed.
+[Task:] Reading
+  - Read documentation
+  - 60m
+Reading completed.
+[Task:] Lunchtime
+  - Stretch the legs, it's lunch time!
+  - 30m
+Lunchtime completed.
+[Task:] Hackathon
+  - Capstone Hackathon is now.
+  - 180m
+Hackathon completed.
+[Task:] Walking
+  - Take a walk (and rehydrate!)
+  - 15m
+Walking completed.
+[Task:] Pattern Recognition
+  - Research design pattern of the day
+  - 30m
+Pattern Recognition completed.
+[Task:] Shutdown
+  - It's time to pack it up, buddy!
+  - Run: shutdown.bat
+Shutdown completed.
