@@ -11,9 +11,9 @@
             {"3" : "Administration"}
         ],
         "Capstone": [
-            {"1" : "Write an article"},
-            {"2" : "Work on containerization"},
-            {"3" : "Administration & maintenance"}
+            {"1" : "Research an article"},
+            {"2" : "Write an article"},
+            {"3" : "Work on Developer diary"}
         ]
     },
     "prompts": {

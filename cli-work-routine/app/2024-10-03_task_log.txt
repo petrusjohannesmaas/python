@@ -1,0 +1,5 @@
+Practise theory: skipped
+Work: Apply business logic with Python (selected)
+  Session completed: Yes
+Capstone: Work on Developer diary (selected)
+  Session completed: Yes
