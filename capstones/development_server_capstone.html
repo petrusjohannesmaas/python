@@ -1,0 +1,200 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<style>
+
+    /* General Markdown Styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    ul {
+        margin-left: 1.5rem;
+        list-style-type: disc;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Link Styles */
+    a {
+        color: #1e90ff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Code Block Styling */
+    pre {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+    }
+
+    code {
+        font-size: 0.9rem;
+        padding: 5px;
+        border: 1px solid black;
+    }
+
+    pre code {
+        display: block;
+        white-space: pre-wrap;
+    }
+
+    .blockquote {
+        padding: 1rem;
+        margin: 1rem 0;
+        background-color: #f0f0f0;
+        border-left: 5px solid #1e90ff;
+    }
+
+    /* Highlighted Important Steps */
+    strong {
+        font-weight: bold;
+        color: #282c34;
+    }
+
+    blockquote ol {
+        list-style-type: decimal;
+        margin-left: 1.5rem;
+    }
+
+    blockquote li {
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<h1 id="configuringadevelopmentserver">🖥 Configuring a development server</h1>
+<p>This articles contains all the steps you need to take to configure development server that you can access on Visual
+    Studio Code (locally and remotely). You must be running Windows 10 (Build 19041 and higher) or Windows 11 to use WSL
+    and run the commands below.
+</p>
+<hr>
+<h3 id="research">Official documentation:</h3>
+<p><a href="https://wiki.debian.org/InstallingDebianOn/Microsoft/Windows/SubsystemForLinux" target="_blank">Debian WSL
+        Installation</a><br />
+    <a href="https://learn.microsoft.com/en-us/windows/wsl/basic-commands" target="_blank">WSL commands</a><br />
+    <a href="https://docs.brew.sh/Manpage" target="_blank">Homebrew commands</a><br />
+    <a href="https://code.visualstudio.com/docs/languages/python" target="_blank">Python in Visual Studio Code</a><br />
+    <a href="https://code.visualstudio.com/docs/remote/tunnels" target="_blank">Developing with Remote Tunnels in
+        VScode</a><br />
+    <a href="https://code.visualstudio.com/docs/editor/settings-sync" target="_blank">Settings Sync in VScode</a><br />
+    <a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank">Git source control in
+        VScode</a><br />
+    <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"
+        target="_blank">Managing your Github personal access tokens</a>
+</p>
+<hr>
+<p><strong>🔵 Run your PowerShell as administrator and install WSL on your computer :</strong></p>
+<pre><code class="powershell language-powershell">wsl --install
+
+# By default, the installed Linux distribution will be Ubuntu. This can be changed using the `-d` flag.
+wsl --install -d Debian
+
+#(Optional:) unregister any other distributions so you're only working on Debian
+wsl --unregister &lt;Distribution Name&gt;
+</code></pre>
+<p><strong>🔵 Open the Debian console in your VScode terminal and run these commands:</strong></p>
+<pre><code class="Bash language-Bash"># update the Debian system
+sudo apt update
+sudo apt upgrade
+
+# Install Git and Curl
+sudo apt install git
+sudo apt install curl
+
+# Download Homebrew:
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Once the install is done make sure Brew is in PATH by running:
+cat ~/.bashrc
+
+# run this to update PATHs
+source ~/.bashrc 
+
+# Output should be "Your system is ready to brew" if you run this command:
+brew doctor 
+
+#See available Homebrew versions:
+brew search python 
+
+#Install the latest/highest version
+brew install python@3.xx
+
+#Confirm python installation
+python3 -V 
+</code></pre>
+<p><strong>📦 If you want to manage your packages and versions later:</strong></p>
+<pre><code class="Bash language-Bash">brew --help
+brew update # Update internal list of formulae
+brew brew upgrade &lt;package&gt; #Update a specific formula
+</code></pre>
+<p><strong>🔵 Configure your version control:</strong></p>
+<pre><code class="Bash language-Bash">git config --global user.name "First_name Last_name"
+git config --global user.email "email@example.com"
+
+#Add your code folder (with version control)
+mkdir code &amp;&amp; cd code &amp;&amp; git init
+
+#Clone a Github Python repository with your personal authentication token
+git clone https://&lt;PAT&gt;@github.com/petrusjohannesmaas/python.git
+</code></pre>
+<p><strong>☞ Make sure the following VScode extensions are installed on the Debian system:</strong></p>
+<p>
+<ul>
+    <li>Python (Language support)</li>
+    <li>Black Formatter (Auto formatting)</li>
+    <li>Pylint (Linting support)</li>
+    <li>Python Debugger (Debugging)</li>
+</ul>
+</p>
+<p><strong>🔵 In your VScode Command Pallet do the following:</strong></p>
+<ul>
+    <li>Press <em>f1</em> to open the command pallet</li>
+    <li>Type <code>Python:Select Interpreter</code> select the Homebrew interpreter path. </li>
+    <li><code>Create: New File</code> and select <code>Python File</code></li>
+    <li>Add <code>print("Hello Debian!")</code> to the file and save it in the Python repository as <em>test.py</em>
+    </li>
+    <li>Type <code>Python: Run Python File in Terminal</code> (or just press the run button) to see the code in your
+        terminal</li>
+</ul>
+<p>🔄 <strong>Sync your VScode settings with your Github account:</strong></p>
+<ul>
+    <li>
+        <p>Commit and sync your changes on the <code>main</code> branch of your <code>/python</code> repository</p>
+    </li>
+    <li>
+        <p>Enable <a href="https://code.visualstudio.com/docs/editor/settings-sync" target="_blank">Settings Sync</a> to
+            preconfigure other VScode terminals automatically</p>
+    </li>
+    <li>
+        <p>Enable <a href="https://code.visualstudio.com/docs/remote/tunnels" target="_blank">Remote Tunnel Access</a>
+            for remote access to the Debian server</p>
+    </li>
+</ul>
+<p>🔵<strong>Open PowerShell and back up your development server configuration:</strong></p>
+<pre><code class="powershell language-powershell">wsl --export Debian PythonDebianSnapshot
+</code></pre>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
+
+<script>hljs.highlightAll();</script>
