@@ -1,0 +1,79 @@
+{
+  "life_expectancy": {
+    "average_years": 64.88,
+    "stages": [
+      {
+        "name": "Ordinary World",
+        "age_range": "0-5",
+        "description": "Early childhood, establishing foundational experiences and beliefs.",
+        "lore": ""
+      },
+      {
+        "name": "Call to Adventure",
+        "age_range": "5-10",
+        "description": "Late childhood/early adolescence, encountering challenges or opportunities that disrupt the ordinary world.",
+        "lore": ""
+      },
+      {
+        "name": "Refusal of the Call",
+        "age_range": "10-15",
+        "description": "Mid-adolescence, initial resistance to the call, possibly due to fear or uncertainty.",
+        "lore": ""
+      },
+      {
+        "name": "Meeting the Mentor",
+        "age_range": "15-20",
+        "description": "Late adolescence/early adulthood, seeking guidance and support from a mentor or role model.",
+        "lore": ""
+      },
+      {
+        "name": "Crossing the Threshold",
+        "age_range": "20-25",
+        "description": "Early adulthood, committing to the journey, leaving the familiar behind.",
+        "lore": ""
+      },
+      {
+        "name": "Tests, Allies, Enemies",
+        "age_range": "25-30",
+        "description": "Mid-adulthood, facing challenges, forming alliances, and encountering adversaries.",
+        "lore": ""
+      },
+      {
+        "name": "Approach to the Inmost Cave",
+        "age_range": "30-35",
+        "description": "Late adulthood, confronting inner fears and doubts, preparing for the ultimate challenge.",
+        "lore": ""
+      },
+      {
+        "name": "Ordeal",
+        "age_range": "35-40",
+        "description": "Mid-life crisis, undergoing a transformative experience, often involving overcoming a significant obstacle.",
+        "lore": ""
+      },
+      {
+        "name": "Reward",
+        "age_range": "40-45",
+        "description": "Early middle age, reaping the benefits of the journey, achieving personal growth and fulfillment.",
+        "lore": ""
+      },
+      {
+        "name": "The Road Back",
+        "age_range": "45-50",
+        "description": "Mid-middle age, facing new challenges or responsibilities that may require returning to the ordinary world.",
+        "lore": ""
+      },
+      {
+        "name": "Resurrection",
+        "age_range": "50-55",
+        "description": "Late middle age, overcoming final obstacles, emerging stronger and wiser.",
+        "lore": ""
+      },
+      {
+        "name": "Return with the Elixir",
+        "age_range": "55-65",
+        "description": "Retirement, sharing wisdom and experiences with others, contributing to the betterment of society.",
+        "lore": ""
+      }
+    ]
+  }
+}
