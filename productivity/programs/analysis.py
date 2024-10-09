@@ -1,65 +1,77 @@
-from components.problems import Problem
-from components.steps import Steps
+from fastapi import FastAPI, Request
+from fastapi.responses import FileResponse, JSONResponse
+from pydantic import BaseModel
+from datetime import datetime
+import json
+import os
 
-# GREETER
-print(
-    "\nHello, welcome to the TAPIE framework!\nI'm here to help you analyze and solve problems.\n"
-)
-
-problem = Problem()
-problem.load_data()
-
-problem_categories = {"1": problem.case_1, "2": problem.case_2, "3": problem.case_3}
-
-steps = Steps()
-steps.load_data()
-
-steps_dict = {
-    "1": steps.case_1,
-    "2": steps.case_2,
-    "3": steps.case_3,
-    "4": steps.case_4,
-    "5": steps.case_5,
-}
-
-answers = {}  # global variable
+app = FastAPI()
 
 
-def problem_switch(user_input):
-    return problem_categories.get(user_input, problem.invalid)()
+# Load JSON data from the files
+def load_json_data(filename):
+    with open(os.path.join("../data", filename), "r") as file:
+        return json.load(file)
 
 
-# STEP 0: Identify the problem category
-while True:
-    print("\nWhat type of problem is it?\n")
-    print("[1] People, [2] Product, [3] Processes, [q] Quit\n")
-    result = input("\nYour answer: ")
+environment_data = load_json_data("environment_variables.json")
+tactics_data = load_json_data("tactics.json")
 
-    if result == "q":
-        break
 
-    if result in ["1", "2", "3"]:
-        ("Great let's look at some examples:\n")
-        problem_switch(result)
-        break
+class ReportData(BaseModel):
+    why1: str
+    why2: str
+    why3: str
+    why4: str
+    why5: str
+    idea1: str
+    idea2: str
+    idea3: str
+    success: str
+    metric1: str
+    metric2: str
+    metric3: str
+    evaluation: str
 
-answers[0] = input("\nWhat is your specific problem?: ")
-answers[1] = input("\nWhat is its impact?: ")
-print("\n")
 
-# STEP 1: Triage step
-print(steps_dict["1"]())
-input("Still there?")
-# questions[1] = input("\nSecond answer: ")
-# questions[2] = input("\nThird answer: ")
-# questions[3] = input("\nFourth answer: ")
-# questions[4] = input("\nFifth answer: ")
+@app.get("/")
+def serve_html():
+    return FileResponse("tapie_analysis.html")
 
-print("\nGood job!, up next is the Analyze step.\n")
 
-# STEP 2: Analyze step
-# STEP 3: Plan step
+@app.get("/environment_data")
+def get_environment_data():
+    return JSONResponse(content=environment_data)
 
-# STEP 4: Implement step
 
-# STEP 5: Evaluate step
+@app.get("/tactics_data")
+def get_tactics_data():
+    return JSONResponse(content=tactics_data)
+
+
+@app.post("/submit-report")
+async def submit_report(report: ReportData):
+    report_data = report.dict()
+
+    now = datetime.now()
+    file_name = f"tapie_report_{now.strftime('%B')}_{now.year}.txt"
+
+    # Write the report to the file
+    with open(file_name, "w") as file:
+        file.write("Environment Variables:\n")
+        for key, value in environment_data.items():
+            file.write(f"{key}: {value}\n")
+        file.write("\nTactics:\n")
+        for key, value in tactics_data.items():
+            file.write(f"{key}: {value}\n")
+        file.write("\nReport Data:\n")
+        for key, value in report_data.items():
+            file.write(f"{key}: {value}\n")
+
+    return JSONResponse(content={"success": True})
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
