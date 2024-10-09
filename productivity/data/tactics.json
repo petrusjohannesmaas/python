@@ -55,7 +55,7 @@
                 "actions": [
                     "Spend time with the kids",
                     "Go shopping",
-                    "Organize/fix the house",
+                    "Organize/fix the house"
                 ]
             },
             "PERSONAL": { 
@@ -67,7 +67,7 @@
                 ]
             },
             "MARRIAGE": {
-                "slot:" "20:00 - 22:30",
+                "slot": "20:00 - 22:30",
                 "actions": [
                     "Converse with your wife",
                     "Watch a movie",

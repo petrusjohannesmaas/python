@@ -35,7 +35,7 @@
   },
 
   "tapie_framework": {
-    "steps": [
+    "Steps": [
       {
         "name": "Triage",
         "description": "Prioritize problems based on urgency and impact.",
