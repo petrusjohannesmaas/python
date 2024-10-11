@@ -22,6 +22,38 @@
                     "Update Twitter"
                 ]
             },
+            "SHUTDOWN": {
+                "slot": "18:00 - 21:30",
+                "actions": [
+                    "Sweep",
+                    "Listen to an audio book",
+                    "Fold clothes",
+                    "Complete the tactical_report.py",
+                    "In bed at 22:00"
+                ]
+            },
+            "WRITING": {
+                "slot": "09:00 - 18:00",
+                "actions": [
+                    "Watch sports",
+                    "Work on manuals",
+                    "Update LinkedIn",
+                    "Research blockchain technology"
+                ]
+            }
+        },
+        "fridays": {
+            "STARTUP": {
+                "slot": "05:00 - 09:00",
+                "actions": [
+                    "Wake up at 5am",
+                    "Have a morning coffee",
+                    "Read some documentation",
+                    "Pack breakfast",
+                    "School with the kids",
+                    "Clean yourself"
+                ]
+            },
             "WRITING": {
                 "slot": "09:00 - 18:00",
                 "actions": [
