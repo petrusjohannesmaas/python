@@ -1,0 +1,21 @@
+Tactical Report for Friday, October 11, 2024
+
+Wake up at 5am: yes
+Have a morning coffee: yes
+Read some documentation: no
+Pack breakfast: no
+School with the kids: yes
+Clean yourself: no
+Watch sports: yes
+Work on manuals: yes
+Update LinkedIn: no
+Research blockchain technology: no
+Sweep: no
+Listen to an audio book: yes
+Fold clothes: no
+Complete the tactical_report.py: yes
+In bed at 22:00: yes
+
+Exceptions: I needed help
+Mood: yes
+Comments: nope
