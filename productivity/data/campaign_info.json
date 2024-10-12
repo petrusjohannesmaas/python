@@ -1,0 +1,45 @@
+{
+    "progress": {
+        "STAGE": "Tests, Allies, Enemies",
+        "LORE": "Mid-adulthood, facing challenges, forming alliances, and encountering adversaries.",
+        "LEVEL": "1. Physiological Needs",
+        "ROADMAP": "Professional Python developer",
+        "BADGE": "None",
+        "QUEST": "Path of the Nerd",
+        "BOSSES": {
+            "miniboss": "https://vscode.dev/edu?courseId=intro-to-python",
+            "main_boss": "https://www.coursera.org/learn/sql-data-science"
+        },
+        "WEAPON LEVEL": "Easy"
+    },
+    "rules_and_mechanics": {
+        "LIMITS": [
+            "I don't perform in any concerts for the rest of the year",
+            "I don't work on any new projects for the rest of the year"
+        ],
+        "RULES": [
+            "No staying up later than planned",
+            "No working overtime",
+            "No coding outside of designated times"
+        ],
+        "OVERDUE": [
+            "Bouncing stems for my 2 clients",
+            "Finishing the website deployment at work",
+            "Cleaning my home lab and computer",
+            "Cleaning my online footprint"
+        ],
+        "EXCEPTIONS": [
+            "After a meeting, the rest of the work day is for writing",
+            "If I can get paid within a week of working on a project I'll do it.",
+            "If the power is off at my house or work, the rest of the day is for writing."
+        ],
+        "CONSEQUENCES": [
+            "Depression",
+            "Anxiety",
+            "Regret",
+            "Poverty",
+            "Loneliness",
+            "Disease"
+        ]
+    }
+}

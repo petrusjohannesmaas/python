@@ -14,16 +14,24 @@ def load_json_data(filename):
         return json.load(file)
 
 
-environment_data = load_json_data("environment_variables.json")
+campaign_data = load_json_data("campaign_info.json")
 tactics_data = load_json_data("tactics.json")
 
 
 class ReportData(BaseModel):
+    problem: str
+    triage1: str
+    triage2: str
+    triage3: str
+    triage4: str
     why1: str
     why2: str
     why3: str
     why4: str
     why5: str
+    rootCause1: str
+    rootCause2: str
+    rootCause3: str
     idea1: str
     idea2: str
     idea3: str
@@ -39,9 +47,9 @@ def serve_html():
     return FileResponse("tapie_analysis.html")
 
 
-@app.get("/environment_data")
-def get_environment_data():
-    return JSONResponse(content=environment_data)
+@app.get("/campaign_info")
+def get_campaign_info():
+    return JSONResponse(content=campaign_data)
 
 
 @app.get("/tactics_data")
@@ -59,8 +67,8 @@ async def submit_report(report: ReportData):
 
     # Write the report to the file
     with open(file_path, "w") as file:
-        file.write("Environment Variables:\n")
-        for key, value in environment_data.items():
+        file.write("Campaign Info:\n")
+        for key, value in campaign_data.items():
             file.write(f"{key}: {value}\n")
         file.write("\nTactics:\n")
         for key, value in tactics_data.items():
