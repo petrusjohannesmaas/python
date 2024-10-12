@@ -162,15 +162,25 @@ exceptions = console.input("Explain the exception briefly: ")
 mood = console.input("\nWas it a good day?: (yes/no) ")
 comments = console.input("\nAny comments?: \n ->")
 
+# Get current datetime
 now = datetime.now()
-file_name = f"tactical_report_{input_day}_{now.strftime('%B')}_{now.year}.txt"
 
-with open(file_name, "w") as file:
-    file.write(f"Tactical Report for {input_day}, {now.strftime('%B %d, %Y')}\n\n")
+# Create directory if it doesn't exist
+if not os.path.exists("../reports"):
+    os.makedirs("../reports")
+
+# Create the file path
+file_name = f"tactical_report_{input_day}_{now.strftime('%B_%d_%Y')}.txt"
+file_path = os.path.join("../reports", file_name)
+
+# Write to the file
+with open(file_path, "w") as file:
+    file.write(f"Tactical Report for {input_day}, {now.strftime('%B, %d, %Y')}\n\n")
     for action, result in responses:
         file.write(f"{action}: {result}\n")
     file.write(f"\nExceptions: {exceptions}\n")
     file.write(f"Mood: {mood}\n")
     file.write(f"Comments: {comments}\n")
 
-console.print(f"\nReport saved to {file_name}")
+# Print the path to the file
+print(f"\nReport saved to {file_path}")

@@ -55,9 +55,10 @@ async def submit_report(report: ReportData):
 
     now = datetime.now()
     file_name = f"tapie_report_{now.strftime('%B')}_{now.year}.txt"
+    file_path = os.path.join("../reports", file_name)
 
     # Write the report to the file
-    with open(file_name, "w") as file:
+    with open(file_path, "w") as file:
         file.write("Environment Variables:\n")
         for key, value in environment_data.items():
             file.write(f"{key}: {value}\n")
