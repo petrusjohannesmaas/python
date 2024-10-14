@@ -1,0 +1,32 @@
+{   
+    "accumulated_xp" : "",
+    "research_xp_points" : {
+        "read documentation": 1,
+        "publish a manual": 7,
+        "build a template": 14,
+        "complete a miniboss battle": 21,
+        "complete a boss battle": 31
+    },
+    "badges" : {
+        "Coder": {
+            "xp_range": "0-48",
+            "unlocked": "false"
+        },
+        "Programmer": {
+            "xp_range": "49-199",
+            "unlocked": "false"
+        },
+        "Associate": {
+            "xp_range": "200-499",
+            "unlocked": "false"
+        },
+        "Sysadmin": {
+            "xp_range": "500-999",
+            "unlocked": "false"
+        },
+        "Senior": {
+            "xp_range": "1000+",
+            "unlocked": "false"
+        }
+    }
+}

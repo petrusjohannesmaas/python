@@ -22,3 +22,18 @@
         "": ""
     }
 }
+
+<h3 id="research">Official documentation:</h3>
+<p><a href="https://wiki.debian.org/InstallingDebianOn/Microsoft/Windows/SubsystemForLinux" target="_blank">Debian WSL
+        Installation</a><br />
+    <a href="https://learn.microsoft.com/en-us/windows/wsl/basic-commands" target="_blank">WSL commands</a><br />
+    <a href="https://docs.brew.sh/Manpage" target="_blank">Homebrew commands</a><br />
+    <a href="https://code.visualstudio.com/docs/languages/python" target="_blank">Python in Visual Studio Code</a><br />
+    <a href="https://code.visualstudio.com/docs/remote/tunnels" target="_blank">Developing with Remote Tunnels in
+        VScode</a><br />
+    <a href="https://code.visualstudio.com/docs/editor/settings-sync" target="_blank">Settings Sync in VScode</a><br />
+    <a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank">Git source control in
+        VScode</a><br />
+    <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"
+        target="_blank">Managing your Github personal access tokens</a>
+</p>

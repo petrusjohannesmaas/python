@@ -31,15 +31,6 @@
                     "Complete the tactical_report.py",
                     "In bed at 22:00"
                 ]
-            },
-            "WRITING": {
-                "slot": "09:00 - 18:00",
-                "actions": [
-                    "Watch sports",
-                    "Work on manuals",
-                    "Update LinkedIn",
-                    "Research blockchain technology"
-                ]
             }
         },
         "fridays": {
