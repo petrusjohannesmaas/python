@@ -1,11 +1,11 @@
 {   
     "accumulated_xp" : "",
-    "research_xp_points" : {
-        "read documentation": 1,
-        "publish a manual": 7,
-        "build a template": 14,
-        "complete a miniboss battle": 21,
-        "complete a boss battle": 31
+    "research_challenges" : {
+        "read documentation": "+1",
+        "publish a manual": "+7",
+        "build a clone": "+14",
+        "defeat a miniboss": "+21",
+        "complete a boss battle": "+31"
     },
     "badges" : {
         "Coder": {

@@ -1,6 +1,0 @@
-Practise theory: Drill Python syntax exercises (selected)
-  Session completed: No
-Work: Administration (selected)
-  Session completed: Yes
-Capstone: Work on Developer diary (selected)
-  Session completed: Yes

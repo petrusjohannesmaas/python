@@ -1,0 +1,90 @@
+{
+    "timeblocks": {
+        "weekdays": {
+            "morning": {
+                "slot": "05:00 - 09:00",
+                "actions": [
+                    "Wake up at 5am",
+                    "Read documentation",
+                    "School with the kids"
+                ]
+            },
+            "work": {
+                "slot": "09:00 - 18:00",
+                "actions": [
+                    "Earn your salary",
+                    "Chip away at overdue tasks",
+                    "Fight the main-boss"
+                ]
+            },
+            "evening": {
+                "slot": "18:00 - 21:30",
+                "actions": [
+                    "Chores",
+                    "Complete the Daily Report",
+                    "Switch off devices at 22:00"
+                ]
+            }
+        },
+        "fridays": {
+            "morning": {
+                "slot": "05:00 - 09:00",
+                "actions": [
+                    "Wake up at 5am",
+                    "Read documentation",
+                    "School with the kids"
+                ]
+            },
+            "research": {
+                "slot": "09:00 - 18:00",
+                "actions": [
+                    "Research a quest",
+                    "Fight the mini-boss",
+                    "Write a quest manual"
+                ]
+            },
+            "evening": {
+                "slot": "18:00 - 21:30",
+                "actions": [
+                    "Chores",
+                    "Complete the Daily Report",
+                    "Switch off devices at 22:00"
+                ]
+            }
+        },
+        "weekends": {
+            "morning": {
+                "slot": "05:00 - 07:30",
+                "actions": [
+                    "Wake up at 5am",
+                    "Fight the mini-boss",
+                    "Clean yourself"
+                ]
+            },
+            "family": {
+                "slot": "07:30 - 15:00",
+                "actions": [
+                    "Spend time with the kids",
+                    "Go shopping",
+                    "Organize the house"
+                ]
+            },
+            "personal": { 
+                "slot": "15:00 - 20:00",
+                "actions": [
+                    "Journal",
+                    "Cook",
+                    "Read a book"
+                ]
+            },
+            "marriage": {
+                "slot": "20:00 - 22:30",
+                "actions": [
+                    "Converse with your wife",
+                    "Watch a movie",
+                    "Go to bed late"
+                ]
+            }
+        }
+    }
+}
