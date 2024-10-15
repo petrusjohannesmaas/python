@@ -38,9 +38,9 @@
             "research": {
                 "slot": "09:00 - 18:00",
                 "actions": [
-                    "Research a quest",
-                    "Fight the mini-boss",
-                    "Write a quest manual"
+                    "Do research",
+                    "Draft a manual",
+                    "Study blockchain technology"
                 ]
             },
             "evening": {
@@ -57,8 +57,7 @@
                 "slot": "05:00 - 07:30",
                 "actions": [
                     "Wake up at 5am",
-                    "Fight the mini-boss",
-                    "Clean yourself"
+                    "Read documentation"
                 ]
             },
             "family": {
@@ -73,8 +72,7 @@
                 "slot": "15:00 - 20:00",
                 "actions": [
                     "Journal",
-                    "Cook",
-                    "Read a book"
+                    "Cook"
                 ]
             },
             "marriage": {
@@ -82,7 +80,7 @@
                 "actions": [
                     "Converse with your wife",
                     "Watch a movie",
-                    "Go to bed late"
+                    "Go to bed at 22:30"
                 ]
             }
         }

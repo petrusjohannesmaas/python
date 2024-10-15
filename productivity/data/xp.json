@@ -1,32 +1,37 @@
 {   
-    "accumulated_xp" : "",
-    "research_challenges" : {
-        "read documentation": "+1",
-        "publish a manual": "+7",
-        "build a clone": "+14",
-        "defeat a miniboss": "+21",
-        "complete a boss battle": "+31"
+    "xp_accumulated" : "",
+    "xp_per_action" : {
+        "Read Documentation": "0.25",
+        "Fight the main-boss": "0.5",
+        "Do research": "0.75",
+        "Draft a manual": "0.75",
+        "Study blockchain technology": "0.75"
     },
     "badges" : {
         "Coder": {
             "xp_range": "0-48",
-            "unlocked": "false"
+            "unlocked": "false",
+            "xp_multiplier": "0"
         },
         "Programmer": {
             "xp_range": "49-199",
-            "unlocked": "false"
+            "unlocked": "false",
+            "xp_multiplier": "1.25"
         },
         "Associate": {
             "xp_range": "200-499",
-            "unlocked": "false"
+            "unlocked": "false",
+            "xp_multiplier": "1.5"
         },
         "Sysadmin": {
             "xp_range": "500-999",
-            "unlocked": "false"
+            "unlocked": "false",
+            "xp_multiplier": "2"
         },
         "Senior": {
             "xp_range": "1000+",
-            "unlocked": "false"
+            "unlocked": "false",
+            "xp_multiplier": "2.5"
         }
     }
 }

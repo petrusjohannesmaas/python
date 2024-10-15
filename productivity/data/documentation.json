@@ -16,7 +16,8 @@
           "Authentication vs Authorization": "https://auth0.com/docs/get-started/identity-fundamentals/authentication-and-authorization",
           "Introduction to Identity and Access Management (IAM)": "https://auth0.com/docs/get-started/identity-fundamentals/identity-and-access-management",
           "Auth0 with Python (Flask)": "https://auth0.com/docs/quickstart/webapp/python/interactive",
-          "Cerbos Authentication layer": "https://docs.cerbos.dev/cerbos/latest/what-is-cerbos"
+          "Cerbos Authentication layer": "https://docs.cerbos.dev/cerbos/latest/what-is-cerbos",
+          "FastAPI on Visual Studio Code": "https://code.visualstudio.com/docs/python/tutorial-fastapi"
     },
     "read": {
         "": ""
