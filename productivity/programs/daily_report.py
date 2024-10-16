@@ -1,12 +1,15 @@
 import json
 import os
+import couchdb
 import jmespath
+from dotenv import load_dotenv
 from rich.console import Console
 from datetime import datetime
 
 """Initialization"""
 
 console = Console()
+load_dotenv()
 
 
 def load_json_data(filename):
@@ -174,16 +177,19 @@ exceptions = console.input(
 comments = console.input("\n[bold]Any comments?:[/bold]\n-> ")
 memory = console.input("\n[bold]Note a memory you'd like to retain:[/bold]\n-> ")
 
+# Connect to the CouchDB server
+c = os.getenv("CONNECTION_STRING")
+couch = couchdb.Server(c)
+
+# Check if the database exists, and create it if it doesn't
+db_name = "daily_reports"
+if db_name in couch:
+    db = couch[db_name]
+else:
+    db = couch.create(db_name)
+
 # Get current datetime
 now = datetime.now()
-
-# Create directory if it doesn't exist
-if not os.path.exists("../reports"):
-    os.makedirs("../reports")
-
-# Create the file path
-file_name = f"daily_report_{input_day}_{now.strftime('%B_%d_%Y')}.json"
-file_path = os.path.join("../reports", file_name)
 
 # Calculate performance score
 total_actions = len(responses)
@@ -192,9 +198,9 @@ performance_score = (true_actions / total_actions) * 100
 
 # Create the report data
 report_data = {
-    "date": now.strftime("%Y-%m-%d"),
     "day": input_day,
-    "completed": {action: result for action, result in responses},
+    "month": now.strftime("%B"),
+    "year": now.year,
     "performance_score": performance_score,
     "good_day": mood,
     "exceptions": exceptions,
@@ -202,9 +208,12 @@ report_data = {
     "memory": memory,
 }
 
-# Write to the file
-with open(file_path, "w") as file:
-    json.dump(report_data, file, indent=4)
+# Add each completed action as an individual field
+for action, result in responses:
+    report_data[action] = result
 
-# Print the path to the file
-print(f"\nReport saved to {file_path}")
+# Save the report data to the database
+db.save(report_data)
+
+# Print a confirmation message
+print(f"Report for {input_day} saved to the database.")
