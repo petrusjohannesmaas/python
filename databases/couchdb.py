@@ -13,10 +13,10 @@ db = couch["daily_reports"]
 
 """ Make a new entry """
 
-doc = {}
+doc = {"id": "1", "name": "John Doe", "age": 30}
 db.save(doc)
 
 """ Get a document by ID """
 
-# entry = db["1"]
-# print(entry)
+entry = db["1"]
+print(entry)

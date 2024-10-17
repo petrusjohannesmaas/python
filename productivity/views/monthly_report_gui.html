@@ -7,31 +7,24 @@
     <title>TAPIE Framework Report</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('/campaign_info')
-                .then(response => response.json())
-                .then(data => {
-                    const envContainer = document.getElementById('campaign-info');
-                    Object.keys(data).forEach(key => {
-                        const p = document.createElement('p');
-                        p.textContent = `${key}: ${data[key]}`;
-                        envContainer.appendChild(p);
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                fetch('/levels')
+                    .then(response => response.json())
+                    .then(data => {
+                        const envContainer = document.getElementById('levels');
+                        envContainer.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
                     });
-                });
+    
+                fetch('/timeblocks')
+                    .then(response => response.json())
+                    .then(data => {
+                        const tacticsContainer = document.getElementById('timeblocks');
+                        tacticsContainer.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    });
+            });
+        </script>
 
-            fetch('/tactics_data')
-                .then(response => response.json())
-                .then(data => {
-                    const tacticsContainer = document.getElementById('tactics-data');
-                    Object.keys(data).forEach(key => {
-                        const p = document.createElement('p');
-                        p.textContent = `${key}: ${data[key]}`;
-                        tacticsContainer.appendChild(p);
-                    });
-                });
-        });
-    </script>
 </head>
 
 <body class="container mt-5">
@@ -187,14 +180,14 @@
 
     <!-- Campaign info -->
     <section>
-        <h2>Campaign Info:</h2>
-        <div id="campaign-info"></div>
+        <h2>Quests:</h2>
+        <div id="levels"></div>
     </section>
 
     <!-- Tactics -->
     <section>
-        <h2>Tactics:</h2>
-        <div id="tactics-data"></div>
+        <h2>Timeblocks:</h2>
+        <div id="timeblocks"></div>
     </section>
 
     <!-- Submit analysis report button -->

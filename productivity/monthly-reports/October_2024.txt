@@ -1,0 +1,147 @@
+
+========== Report Data ==========
+{
+    "problem": "a",
+    "triage1": "g",
+    "triage2": "j",
+    "triage3": "v",
+    "triage4": "k",
+    "why1": "f",
+    "why2": "jk",
+    "why3": "f",
+    "why4": "j",
+    "why5": "vf",
+    "rootCause1": "j",
+    "rootCause2": "j",
+    "rootCause3": "t",
+    "idea1": "hn",
+    "idea2": "rf",
+    "idea3": "uj",
+    "success": "fg",
+    "metric1": "j",
+    "metric2": "gvf",
+    "metric3": "gb",
+    "evaluation": "gb"
+}
+========== Quests ==========
+{
+    "Maslow's hierarchy of needs": {
+        "1. Physiological Needs": {
+            "Food": "Ensuring a balanced diet for both your wife and children.",
+            "Water": "Access to clean drinking water."
+        },
+        "2. Safety Needs": {
+            "Physical Safety": "Protection from harm, accidents, and violence.",
+            "Emotional Safety": "Creating a secure and loving environment.",
+            "Health and Well-being": "Access to healthcare and preventive measures.",
+            "Security": "Home security systems, insurance, and emergency plans."
+        },
+        "3. Love and Belonging": {
+            "Intimacy": "Building a strong emotional connection with your wife.",
+            "Family Bonds": "Creating a loving and supportive family environment.",
+            "Friendship": "Encouraging social interactions and friendships.",
+            "Acceptance": "Unconditional love and acceptance for both wife and child."
+        },
+        "4. Esteem Needs": {
+            "Self-Esteem": "Building confidence and self-worth in your wife and child.",
+            "Recognition": "Appreciating and acknowledging their achievements.",
+            "Respect": "Treating each other with dignity and respect.",
+            "Status": "Creating a sense of belonging and value within the community."
+        },
+        "5. Self-Actualization": {
+            "Personal Growth": "Supporting your wife and child's individual goals and passions.",
+            "Creativity": "Encouraging creative expression and problem-solving.",
+            "Learning": "Fostering a love of learning and exploration.",
+            "Purpose": "Helping them find meaning and fulfillment in life."
+        }
+    }
+}
+========== Current Timeblocking ==========
+{
+    "timeblocks": {
+        "weekdays": {
+            "morning": {
+                "slot": "05:00 - 09:00",
+                "actions": [
+                    "Wake up at 5am",
+                    "Read documentation",
+                    "School with the kids"
+                ]
+            },
+            "work": {
+                "slot": "09:00 - 18:00",
+                "actions": [
+                    "Earn your salary",
+                    "Chip away at overdue tasks",
+                    "Fight the main-boss"
+                ]
+            },
+            "evening": {
+                "slot": "18:00 - 21:30",
+                "actions": [
+                    "Chores",
+                    "Complete the Daily Report",
+                    "Switch off devices at 22:00"
+                ]
+            }
+        },
+        "fridays": {
+            "morning": {
+                "slot": "05:00 - 09:00",
+                "actions": [
+                    "Wake up at 5am",
+                    "Read documentation",
+                    "School with the kids"
+                ]
+            },
+            "research": {
+                "slot": "09:00 - 18:00",
+                "actions": [
+                    "Do research",
+                    "Draft a manual",
+                    "Study blockchain technology"
+                ]
+            },
+            "evening": {
+                "slot": "18:00 - 21:30",
+                "actions": [
+                    "Chores",
+                    "Complete the Daily Report",
+                    "Switch off devices at 22:00"
+                ]
+            }
+        },
+        "weekends": {
+            "morning": {
+                "slot": "05:00 - 07:30",
+                "actions": [
+                    "Wake up at 5am",
+                    "Read documentation"
+                ]
+            },
+            "family": {
+                "slot": "07:30 - 15:00",
+                "actions": [
+                    "Spend time with the kids",
+                    "Go shopping",
+                    "Organize the house"
+                ]
+            },
+            "personal": {
+                "slot": "15:00 - 20:00",
+                "actions": [
+                    "Journal",
+                    "Cook"
+                ]
+            },
+            "marriage": {
+                "slot": "20:00 - 22:30",
+                "actions": [
+                    "Converse with your wife",
+                    "Watch a movie",
+                    "Go to bed at 22:30"
+                ]
+            }
+        }
+    }
+}

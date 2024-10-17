@@ -14,8 +14,8 @@ def load_json_data(filename):
         return json.load(file)
 
 
-campaign_data = load_json_data("campaign_info.json")
-tactics_data = load_json_data("tactics.json")
+levels = load_json_data("levels.json")
+timeblocks = load_json_data("timeblocks.json")
 
 
 class ReportData(BaseModel):
@@ -47,35 +47,38 @@ def serve_html():
     return FileResponse("tapie_analysis.html")
 
 
-@app.get("/campaign_info")
-def get_campaign_info():
-    return JSONResponse(content=campaign_data)
+@app.get("/levels")
+def get_levels_info():
+    return JSONResponse(content=json.loads(json.dumps({"levels": levels}, indent=4)))
 
 
-@app.get("/tactics_data")
-def get_tactics_data():
-    return JSONResponse(content=tactics_data)
+@app.get("/timeblocks")
+def get_timeblocks_info():
+    return JSONResponse(
+        content=json.loads(json.dumps({"timeblocks": timeblocks}, indent=4))
+    )
 
 
 @app.post("/submit-report")
 async def submit_report(report: ReportData):
     report_data = report.dict()
-
     now = datetime.now()
-    file_name = f"tapie_report_{now.strftime('%B')}_{now.year}.txt"
-    file_path = os.path.join("../reports", file_name)
+    file_name = f"{now.strftime('%B')}_{now.year}.txt"
+    file_path = os.path.join("../monthly-reports", file_name)
 
-    # Write the report to the file
+    # Write the report to the file with more human-readable formatting
     with open(file_path, "w") as file:
-        file.write("Campaign Info:\n")
-        for key, value in campaign_data.items():
-            file.write(f"{key}: {value}\n")
-        file.write("\nTactics:\n")
-        for key, value in tactics_data.items():
-            file.write(f"{key}: {value}\n")
-        file.write("\nReport Data:\n")
-        for key, value in report_data.items():
-            file.write(f"{key}: {value}\n")
+        file.write("\n========== Report Data ==========\n")
+        formatted_report_data = json.dumps(report_data, indent=4)
+        file.write(formatted_report_data)
+
+        file.write("\n========== Quests ==========\n")
+        formatted_levels = json.dumps(levels, indent=4)
+        file.write(formatted_levels)
+
+        file.write("\n========== Current Timeblocking ==========\n")
+        formatted_timeblocks = json.dumps(timeblocks, indent=4)
+        file.write(formatted_timeblocks)
 
     return JSONResponse(content={"success": True})
 
