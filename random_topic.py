@@ -1,11 +1,11 @@
 import random
 
-topics = ["topic1", "topic2", "topic3"]
+topics = ["Operating systems", "Programming languages", "Database management", "Libraries"]
 
-print("These are the topics:")
+# print("These are the topics:")
 
-for x in topics:
-  print(x)
+# for x in topics:
+#   print(x)
 
 y = random.choice(topics)
 
