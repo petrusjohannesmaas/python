@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Journal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+
+<body>
+    <h1 class="title has-text-centered my-5 is-size-1">Trading Journal</h1>
+    <section class="section hero">
+        <h2 class="subtitle is-size-2 has-text-centered">Notes:</h2>
+        <div class="container is-max-tablet">
+            <div class="card">
+                <div class="card-content">
+                    <p class="subtitle">
+                        {{ note }}
+                    </p>
+                </div>
+                <footer class="card-footer">
+                    <p class="card-footer-item">
+                        <span>
+                            <button class="js-modal-trigger button" data-target="report_modal">Fill in report</button>
+                        </span>
+                    </p>
+                    <p class="card-footer-item">
+                        <span>
+                            <button class="js-modal-trigger button" data-target="update_modal">
+                                Update daily note
+                            </button>
+                        </span>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </section>
+    <section class="section hero">
+        <h2 class="subtitle is-size-2 has-text-centered">Metrics:</h2>
+        <div class="container has-text-centered">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus blanditiis, placeat mollitia officiis magnam earum.
+        </div>
+    </section>
+
+    <!-- Update Modal -->
+    <div id="update_modal" class="modal">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+            <div class="box">
+                <form action="/update" method="post">
+                    <label class="label is-size-5" for="notes">Daily note for {{ date }}</label>
+                    <textarea class="textarea is-family-monospace" name="notes" id="notes" rows="13">{{ modal_note }}</textarea>
+                    <button class="button mt-3" type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Report Modal -->
+    <div id="report_modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h1 class="title has-text-centered">Trade Report</h1>
+                <form method="POST" action="/submit_report">
+                    {% for i in range(1, 7) %}
+                        <div class="row py-5 box">
+                            <h3 class="title is-size-4">Timeslot {{ i }}</h3>
+                            <div class="level">
+                                <div class="level-item has-text-centered">
+                                    <div class="field">
+                                        <label class="label">Valid</label>
+                                        <div class="control">
+                                            <input class="checkbox" type="checkbox" name="valid_{{ i }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="level-item has-text-centered">
+                                    <div class="field">
+                                        <label class="label">Traded</label>
+                                        <div class="control">
+                                            <input class="checkbox" type="checkbox" name="traded_{{ i }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="level-item has-text-centered">
+                                    <div class="field">
+                                        <label class="label">Prayed</label>
+                                        <div class="control">
+                                            <input class="checkbox" type="checkbox" name="prayed_{{ i }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="level">
+                                <div class="level-item has-text-centered">
+                                    <div class="field">
+                                        <label for="pips" class="label">Pips</label>
+                                        <div class="control">
+                                            <input class="input is-small" type="number" name="pips_{{ i }}" placeholder="in pips">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="level-item has-text-centered">
+                                    <div class="field">
+                                        <label class="label">Bias</label>
+                                        <div class="control">
+                                            <input class="input is-small" type="text" name="bias_{{ i }}" placeholder="POS, NEG, NEU">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="level">
+                        <div class="level-item">
+                            <button class="button is-large" type="submit">Submit</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+ 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Functions to open and close a modal
+            function openModal($el) {
+                $el.classList.add('is-active');
+            }
+
+            function closeModal($el) {
+                $el.classList.remove('is-active');
+            }
+
+            function closeAllModals() {
+                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                    closeModal($modal);
+                });
+            }
+
+            // Add a click event on buttons to open a specific modal
+            (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+                const modal = $trigger.dataset.target;
+                const $target = document.getElementById(modal);
+
+                $trigger.addEventListener('click', () => {
+                    openModal($target);
+                });
+            });
+
+            // Add a click event on various child elements to close the parent modal
+            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+                const $target = $close.closest('.modal');
+
+                $close.addEventListener('click', () => {
+                    closeModal($target);
+                });
+            });
+
+            // Add a keyboard event to close all modals
+            document.addEventListener('keydown', (event) => {
+                if (event.key === "Escape") {
+                    closeAllModals();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

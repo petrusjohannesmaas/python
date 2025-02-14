@@ -1,0 +1,23 @@
+Description: 
+| A journal for a systematic trading strategy.
+
+Features:
+- Daily notes ✅
+- Report generation
+- Display metrics
+
+Functions:
+- Create daily note
+- Generate report
+- Display metrics
+
+Schema:
+* id (integer, primary key)
+* valid (boolean)
+* bias (enum)
+* notes (text)
+* traded (boolean)
+* gain_in_pips (integer)
+* loss_in_pips (integer)
+* mood (enum)
+* date (date)
